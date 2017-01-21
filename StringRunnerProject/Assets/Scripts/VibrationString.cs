@@ -83,11 +83,6 @@ public class VibrationString : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            nodeVelocities[nodeVelocities.Length / 2] -= 40.0f * Time.fixedDeltaTime;
-        }
-
         if (Input.GetMouseButtonDown(0))
         {
             Vector2 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
