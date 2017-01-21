@@ -7,6 +7,7 @@ public class Token : MonoBehaviour {
     {
         if(other.tag == "Player")
         {
+            other.SendMessage("AddToken");
             Destroy(gameObject);
         }
     }
