@@ -1,1 +1,21 @@
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 67 65.64"><defs><style>.cls-1{stroke:#420259;stroke-miterlimit:10;stroke-width:7px;fill:url(#New_Gradient_Swatch);}</style><linearGradient id="New_Gradient_Swatch" x1="4.41" y1="33.32" x2="64.41" y2="33.32" gradientUnits="userSpaceOnUse"><stop offset="0.01" stop-color="#fcb922"/><stop offset="0.08" stop-color="#f98d4a"/><stop offset="0.11" stop-color="#f77461"/><stop offset="0.14" stop-color="#f56173"/><stop offset="0.17" stop-color="#f4567e"/><stop offset="0.21" stop-color="#f45281"/><stop offset="0.38" stop-color="#c00f74"/><stop offset="0.67" stop-color="#680086"/><stop offset="1" stop-color="#1a0a3b"/></linearGradient></defs><title>Points</title><path class="cls-1" d="M34.41,56.18c4.4,0,9.35,8.08,13.32,6.17s.73-10.82,3.48-14.26,12.15-2.27,13.12-6.57-8-7.32-9-11.61S61.15,19,58.41,15.55s-10.71,1.69-14.68-.22S38.81,4,34.41,4s-5.35,9.42-9.32,11.34-11.93-3.22-14.68.22,4,10.06,3.05,14.36-10,7.32-9,11.61,10.38,3.13,13.12,6.57-.49,12.35,3.48,14.26S30,56.18,34.4,56.18Z" transform="translate(-0.91 -0.5)"/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 67 65.6" style="enable-background:new 0 0 67 65.6;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#SVGID_1_);stroke:#420259;stroke-width:7;stroke-miterlimit:10;}
+	.st1{fill:#FFDE17;stroke:#FFDE17;stroke-width:1.6543;stroke-miterlimit:10;}
+</style>
+<title>Points</title>
+<radialGradient id="SVGID_1_" cx="33.5" cy="33.3556" r="29.6626" gradientTransform="matrix(1 0 0 -1 0 66)" gradientUnits="userSpaceOnUse">
+	<stop  offset="1.422276e-02" style="stop-color:#FCB922"/>
+	<stop  offset="0.4365" style="stop-color:#F77461"/>
+	<stop  offset="0.7325" style="stop-color:#F45281"/>
+</radialGradient>
+<path class="st0" d="M33.5,55.5c4.4,0,9.4,8.1,13.3,6.2c4-1.9,0.7-10.8,3.5-14.3c2.7-3.4,12.1-2.3,13.1-6.6s-8-7.3-9-11.6
+	s5.8-10.9,3.1-14.4c-2.7-3.4-10.7,1.7-14.7-0.2S37.9,3.3,33.5,3.3s-5.4,9.4-9.3,11.3c-4,1.9-11.9-3.2-14.7,0.2
+	c-2.7,3.4,4,10.1,3.1,14.4c-1,4.3-10,7.3-9,11.6s10.4,3.1,13.1,6.6c2.7,3.4-0.5,12.3,3.5,14.3C24.1,63.6,29.1,55.5,33.5,55.5
+	L33.5,55.5z"/>
+<polygon class="st1" points="33.3,22.8 36.6,29.6 44,30.6 38.6,35.9 39.9,43.3 33.3,39.8 26.6,43.3 27.9,35.9 22.5,30.6 29.9,29.6 
+	"/>
+</svg>
