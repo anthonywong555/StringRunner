@@ -27,5 +27,9 @@ public class Player : MonoBehaviour
         pS.Play();
         Destroy(pS, pS.main.duration);
         Destroy(gameObject);
+
+        GameObject.Find("Main Camera/Music").GetComponent<Music>().EndMusic();
+
+        Application.ExternalCall("OnPlayerDeath");
     }
 }

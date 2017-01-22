@@ -88,6 +88,8 @@ public class VibrationString : MonoBehaviour
             Vector2 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             nodeVelocities[GetClosestNode(point)] -= 40.0f * Time.fixedDeltaTime;
+
+            GameObject.Find("Main Camera/KickSound").GetComponent<AudioSource>().Play();
         }
     }
 
@@ -156,6 +158,7 @@ public class VibrationString : MonoBehaviour
         if(nodeVelocities[nodeNearest] > 0)
         {
             collision.gameObject.GetComponent<Rigidbody2D>().velocity += Vector2.up * nodeVelocities[nodeNearest] * 10;
+            Application.ExternalCall("OnBounce");
         }
 
         Debug.Log("Collision");
