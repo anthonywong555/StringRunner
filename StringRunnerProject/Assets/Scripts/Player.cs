@@ -30,6 +30,6 @@ public class Player : MonoBehaviour
 
         GameObject.Find("Main Camera/Music").GetComponent<Music>().EndMusic();
 
-        Application.ExternalCall("OnPlayerDeath");
+        Application.ExternalCall("OnWin");
     }
 }
