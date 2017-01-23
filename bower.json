@@ -1,0 +1,25 @@
+{
+  "name": "dangerousnanthy",
+  "description": "",
+  "main": "gulpfile.babel.js",
+  "authors": [
+    "Ananth Rao <ananthamapod@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/ananthamapod/DangerousNanthy",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "^1.7.1",
+    "paper-toolbar": "PolymerElements/paper-toolbar#^1.1.7",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#^1.3.1",
+    "paper-button": "PolymerElements/paper-button#^1.0.14",
+    "paper-ripple": "PolymerElements/paper-ripple#^1.0.10",
+    "paper-spinner": "PolymerElements/paper-spinner#^1.2.1"
+  }
+}

@@ -1,0 +1,52 @@
+<html><head><title>String Runner</title><meta charset="utf-8"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><style>#PlayButton,#logo,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font:inherit;vertical-align:baseline}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}.Screen{background:#000;width:100%;height:100vh;position:absolute;transition:transform .5s cubic-bezier(.21,-.49,.97,1.43);top:0;left:0}.Screen[started]{transform:translateY(-100%)}.Screen .center{left:50%;top:50%;transform:translate(-50%,-50%)}#PlayButton{margin:auto;width:7em;padding:.5em;font-size:1.8em;background:rgba(255,255,255,0);border:2px solid;color:#fff;transition:color .25s,background-color .25s}#PlayButton:hover{background:rgba(255,255,255,.13)}#PlayButton i{margin-right:.5em}button{cursor:pointer;position:relative}#game{background:url(../StringRunner/FullBackgroundBoing.png) 50% no-repeat,#1a0a3b;background-size:contain}#logo{width:41em;margin:0 auto 1em}img.Icon{width:1.4em}.span{width:100%}#Toolbar{z-index:1;font-family:Roboto;background:0 0}#Toolbar h3{width:6em;text-align:right;transform:translateX(7px)}#Toolbar aside{position:relative;padding:.75em;background:rgba(255,255,255,.17);border:3px solid;border-radius:6px;width:7em}#Toolbar small{position:absolute;bottom:2px;right:.5em;font-size:.7em}#Toolbar .Icon{margin-right:.5em}#Toolbar .Icon.dist{width:2.7em}#canvas{box-shadow:none;margin:0}#TitleScreen{z-index:2}div.logo{display:none}</style><script src="../bower_components/webcomponentsjs/webcomponents-lite.min.js"></script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway|Poiret+One"/><link rel="import" href="../bower_components/polymer/polymer.html"/><link rel="import" href="../bower_components/paper-ripple/paper-ripple.html"/><link rel="import" href="../bower_components/paper-spinner/paper-spinner.html"/><link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html"/><link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html"/><link rel="stylesheet" href="../StringRunner/StringRunnerGame/TemplateData/style.css"/><link rel="shortcut icon" href="../StringRunner/StringRunnerGame/TemplateData/favicon.ico"/><script src="https://use.fontawesome.com/3cb065b0d6.js"></script><script src="../StringRunner/StringRunnerGame/TemplateData/UnityProgress.js"></script><script src="https://code.jquery.com/jquery-2.2.4.min.js"></script></head><body><style is="custom-style" include="iron-flex iron-positioning iron-flex-alignment iron-flex-factors"></style><template id="app" is="dom-bind"><div class="Screen" id="game"><paper-toolbar class="around-justified" id="Toolbar"><div class="span layout horizontal around-justified"><aside class="layout horizontal center-center"><img class="Icon" src="../StringRunner/Time.svg"/><h3>[[fmtTime(time)]]</h3><small>time</small><paper-ripple></paper-ripple></aside><aside class="layout horizontal center-center"><img class="Icon dist" src="../StringRunner/Distance.svg"/><h3>[[distance]]</h3><small>wavelengths</small><paper-ripple></paper-ripple></aside><aside class="layout horizontal center-center"><img class="Icon" src="../StringRunner/Points.svg"/><h3>[[points]]</h3><small>points</small><paper-ripple></paper-ripple></aside></div></paper-toolbar><div class="template"><div class="template-wrap clear"><canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="600px" width="960px"></canvas><br/><div class="logo"></div><div class="fullscreen"><img src="../StringRunner/StringRunnerGame/TemplateData/fullscreen.png" width="38" height="38" alt="Fullscreen" title="Fullscreen" onclick="SetFullscreen(1);"/></div></div></div></div><div class="Screen" id="TitleScreen" started$="[[started]]"><video id="logo" src="BoingLogo.mp4" loop="loop"></video><button id="PlayButton" on-tap="playGame"><span hidden$="[[!gameLoaded]]"><i class="fa fa-play"></i>Play<paper-ripple></paper-ripple></span><paper-spinner active="active" hidden$="[[gameLoaded]]"></paper-spinner></button></div></template><script>const t = document.querySelector("#app")
+const GAME_PATH = "../StringRunner/StringRunnerGame/"
+
+function OnPlayerDeath(a){alert("Hello")}
+function OnWin(a) {
+    t.points+=20
+    sleep(1100).then(_ => {
+        SendMessage("GameManager", "ResetGame")
+        sleep(300).then(_ => SendMessage("GameManager", "StartGame"))
+    })
+}
+function OnTokenCollected(a) {t.points++}
+function OnBounce(a) {t.distance++}
+
+
+t.time = 0;t.started = t.gameLoaded = false
+t.distance = t.points = 0
+const sleep = t => new Promise(res => setTimeout(res, t))
+t.diff = 10
+t.playGame = _ => {
+    t.started = true
+    SendMessage("GameManager", "StartGame");
+}
+t.calcTime = _ => {t.time+=t.diff/1000}
+t.fmtTime = t => {
+    const f = (c,t) => (c < 10?"0":'')+c
+    const m = Math.floor(t/60)
+    const s = Math.floor(t%60)
+    const mm = Math.floor((t%1)*100)
+    return `${f(m)}:${f(s)}:${f(mm)}`
+}
+var Module = {
+    TOTAL_MEMORY: 268435456,
+    errorhandler: null,			// arguments: err, url, line. This function must return 'true' if the error is handled, otherwise 'false'
+    compatibilitycheck: null,
+    backgroundColor: "#222C36",
+    splashStyle: "Light",
+    dataUrl: `${GAME_PATH}Release/StringRunnerGame.data`,
+    codeUrl: `${GAME_PATH}Release/StringRunnerGame.js`,
+    asmUrl: `${GAME_PATH}Release/StringRunnerGame.asm.js`,
+    memUrl: `${GAME_PATH}Release/StringRunnerGame.mem`,
+}
+document.addEventListener("WebComponentsReady", _ => {
+    sleep(500).then(_ => t.$.logo.play())
+    setInterval(t.calcTime, t.diff)
+    const script = document.createElement('script');
+    script.src = GAME_PATH+'Release/UnityLoader.js';
+    script.onload = function () {
+        sleep(7000).then(_ => {t.gameLoaded = true})
+    };
+    document.head.appendChild(script);
+})</script></body></html>
